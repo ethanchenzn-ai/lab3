@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Website</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
+  <h1>The Power of Sequencing</h1>
+  <p>This is my webpage.</p>
+
+<p id="text">Hello!</p>
+<button id="changeText">Change Text</button>
+
+<script>
+  function changeText() {
+    document.getElementById("text").textContent = "Welcome!";
+  }
+
+  document.getElementById("changeText").addEventListener("click", changeText);
+</script>
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+

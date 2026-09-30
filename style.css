@@ -1,0 +1,39 @@
+/* Page style */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Story image */
+img {
+  width: 350px;
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* Buttons */
+button {
+  background-color: #247ba0;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #185570;
+}
+
+button:disabled {
+  background-color: #999;
+  cursor: default;
+}
+
+/* Story text */
+p {
+  font-size: 18px;
+}
