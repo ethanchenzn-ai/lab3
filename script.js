@@ -1,79 +1,88 @@
-// Same three images
-const images = ["beach.jpg", "rain.jpg", "sunset.jpg"];
+// The same three images are used in both stories.
+let images = ["images/boat.JPG", "images/evening.jpg", "images/sea.JPG"];
 
-// Two different sequences
-const orders = [
+let descriptions = [
+  "A sunny beach",
+  "Dark storm clouds over a beach",
+  "A person leaving the beach"
+];
+
+// Each story has a different image order.
+let orders = [
   [0, 1, 2],
   [1, 2, 0]
 ];
 
-const titles = [
-  "An Unexpected Beach Day",
-  "A Fresh Start"
+let titles = [
+  "A Trip Interrupted",
+  "Leaving Too Soon"
 ];
 
-const captions = [
+let captions = [
   [
-    "We arrived at the sunny beach, excited for our trip.",
-    "Suddenly, rain interrupted our plans.",
-    "The rain stopped, and a beautiful sunset saved the day."
+    "I arrived at the sunny beach, ready for a relaxing day.",
+    "Suddenly, storm clouds appeared and it began to rain.",
+    "I left the beach early. My trip was over."
   ],
   [
-    "The rain kept us inside all day.",
-    "At sunset, we decided to try again tomorrow.",
-    "The next morning, we finally enjoyed the sunny beach."
+    "When I arrived at the beach, the weather was terrible.",
+    "I decided to leave instead of waiting for the rain to stop.",
+    "After I left, the sun came out. I had missed the best part."
   ]
 ];
 
-const descriptions = ["Sunny beach", "Rainy weather", "Sunset"];
-const steps = ["Beginning", "Middle", "End"];
+let stages = ["Beginning", "Middle", "End"];
 
-let story = 0;
-let position = 0;
+let currentStory = 0;
+let currentStep = 0;
 
-// Update the image and text
-function updateStory() {
-  let imageNumber = orders[story][position];
+// Update the image and story text.
+function showStory() {
+  let imageNumber = orders[currentStory][currentStep];
 
-  document.getElementById("photo").src = images[imageNumber];
-  document.getElementById("photo").alt = descriptions[imageNumber];
-  document.getElementById("title").textContent = titles[story];
-  document.getElementById("step").textContent = steps[position];
-  document.getElementById("text").textContent = captions[story][position];
+  document.getElementById("picture").src = images[imageNumber];
+  document.getElementById("picture").alt = descriptions[imageNumber];
+  document.getElementById("title").textContent = titles[currentStory];
+  document.getElementById("stage").textContent = stages[currentStep];
+  document.getElementById("text").textContent =
+    captions[currentStory][currentStep];
 
-  document.getElementById("previous").disabled = position === 0;
-  document.getElementById("next").disabled = position === 2;
+  document.getElementById("next").disabled = currentStep === 2;
 }
 
-// Select Story 1
-document.getElementById("story1").addEventListener("click", function() {
-  story = 0;
-  position = 0;
-  updateStory();
-});
+// Switch to Story 1.
+function storyOne() {
+  currentStory = 0;
+  currentStep = 0;
+  showStory();
+}
 
-// Select Story 2
-document.getElementById("story2").addEventListener("click", function() {
-  story = 1;
-  position = 0;
-  updateStory();
-});
+// Switch to Story 2.
+function storyTwo() {
+  currentStory = 1;
+  currentStep = 0;
+  showStory();
+}
 
-// Next image
-document.getElementById("next").addEventListener("click", function() {
-  if (position < 2) {
-    position++;
-    updateStory();
+// Move to the next image.
+function nextImage() {
+  if (currentStep < 2) {
+    currentStep = currentStep + 1;
+    showStory();
   }
-});
+}
 
-// Previous image
-document.getElementById("previous").addEventListener("click", function() {
-  if (position > 0) {
-    position--;
-    updateStory();
-  }
-});
+// Return to the beginning of the current story.
+function restartStory() {
+  currentStep = 0;
+  showStory();
+}
 
-// Show the beginning when the page opens
-updateStory();
+// Listen for button clicks.
+document.getElementById("storyOne").addEventListener("click", storyOne);
+document.getElementById("storyTwo").addEventListener("click", storyTwo);
+document.getElementById("next").addEventListener("click", nextImage);
+document.getElementById("restart").addEventListener("click", restartStory);
+
+// Show the first story when the page loads.
+showStory();
