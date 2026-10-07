@@ -1,4 +1,4 @@
-// The same three images are used in both stories.
+// The three images 
 let images = ["images/boat.JPG", "images/evening.jpg", "images/sea.JPG"];
 
 let descriptions = [
